@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="/pngwing.com.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabble Tannis</title>
+
+</head>
+
+<body>
+
+    <img src="/cool-background.png" alt="" srcset="" id="img1">
+   <div id="div1">
+<img src="https://images.unsplash.com/photo-1611762348135-5b09d2f0390d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="" srcset="" id="img2">
+<h1><span id="span1">0</span>SCORE<span id="span2">0</span></h1>
+<select name="vlaue" id="input">
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+</select>
+<div id="div2">
+<button id="btn1" >Player1</button>
+<button id="btn2">Player2</button>
+<button id="reset" class="remove">Reset</button>
+</div>
+</div> 
+</body>
+
+<script>
+    
+let btn1=document.querySelector("#btn1")
+let btn2=document.querySelector("#btn2")
+let span1=document.querySelector("#span1")
+let span2=document.querySelector("#span2")
+let input = document.querySelector("#input")
+let resetbtn = document.querySelector("#reset")
+
+// code here
+let player1score =0;
+let totoalscore=5
+let gameover=false
+
+btn1.addEventListener("click",()=>{if(!gameover){
+    player1score++;
+    if(player1score===totoalscore)
+    {
+        gameover=true
+       
+        span1.classList.add('winner')
+        span2.classList.add("looser")
+        btn1.classList.add('bg1')
+        btn2.classList.add('bg2')
+        
+    }
+    span1.textContent=player1score;
+
+}})
+let player2score =0;
+btn2.addEventListener("click",()=>{if(!gameover){
+    player2score++;
+    if(player2score===totoalscore)
+    {
+        gameover=true
+        span2.classList.add("winner")
+        span1.classList.add("looser")
+        btn2.classList.add('bg1')
+        btn1.classList.add('bg2')
+    }
+    span2.textContent=player2score;
+
+}})
+
+let nice=()=>{
+   gameover=false;
+   player1score=0
+   player2score=0
+   span1.textContent=0;
+   span2.textContent=0;
+   span1.classList.remove('winner')
+        span2.classList.remove("looser")
+        span2.classList.remove('winner')
+        span1.classList.remove("looser")
+        btn1.classList.remove('bg1')
+        btn2.classList.remove('bg2')
+        btn2.classList.remove('bg1')
+        btn1.classList.remove('bg2')
+}
+input.addEventListener("change",()=>{
+   totoalscore=parseInt(input.value)
+   nice()
+
+
+})
+resetbtn.addEventListener("click",nice)
+</script>
+
+    <link rel="stylesheet" href="/pokimon.css">
+</html>
